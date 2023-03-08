@@ -4,8 +4,8 @@
  * Given an array of integers and an integer, k, find the maximum mean of a subarray of size k.
  * Technique: This is a one of the Two Pointer techniques, more specifically
  * it is Fixed-size sliding window.
- * Time Complexity:
- * Space Complexity:
+ * Time Complexity: O(n^2)
+ * Space Complexity: O(1)
  */
 public class MaxMeanSubarray {
 
@@ -62,8 +62,37 @@ public class MaxMeanSubarray {
         arr = new int[]{1, 1, 1, 1, -1, -1, 2, -1, -1, 6};
         System.out.println("Test Case 4 Output : "+MaxMean(k, arr));
 
+         /*
+        Input k = 5
+        Output: -1
+         */
+        k = 5;
+        arr = new int[]{1};
+        System.out.println("Test Case 5 Output : "+MaxMean(k, arr));
 
+         /*
+        Input k = 1
+        Output: 1
+         */
+        k = 1;
+        arr = new int[]{1};
+        System.out.println("Test Case 5 Output : "+MaxMean(k, arr));
 
+         /*
+        Input k = 2
+        Output: 2
+         */
+        k = 2;
+        arr = new int[]{1,3};
+        System.out.println("Test Case 6 Output : "+MaxMean(k, arr));
+
+        /*
+        Input k = 2
+        Output: -1
+         */
+        k = 2;
+        arr = new int[]{};
+        System.out.println("Test Case 7 Output : "+MaxMean(k, arr));
 
     }
 }
