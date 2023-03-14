@@ -1,9 +1,8 @@
 /**
  * Author: Timothy Jalen Melendez
- * Question: ReverseVowels
+ * Question 2: ReverseVowels
  * Given a string, reverse the order of the vowels in the string.
  * Technique: Hash the elements
- * it is Fixed-size sliding window.
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  */
