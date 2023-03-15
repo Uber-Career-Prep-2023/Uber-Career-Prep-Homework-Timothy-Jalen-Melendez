@@ -6,6 +6,7 @@
  * Technique: Growing/Shrinking window
  * Time Complexity: O(n^3)
  * Space Complexity: O(n)
+ * Time: 40 mins (Unfinished)
  */
 import java.lang.StringBuilder;
 import java.util.HashMap;

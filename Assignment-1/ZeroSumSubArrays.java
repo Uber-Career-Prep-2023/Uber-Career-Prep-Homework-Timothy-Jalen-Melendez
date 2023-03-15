@@ -6,6 +6,7 @@
  * two pointer catch up
  * Time Complexity: O(n^2)
  * Space Complexity: O(1)
+ * Time: 28 mins
  */
 
 public class ZeroSumSubArrays {

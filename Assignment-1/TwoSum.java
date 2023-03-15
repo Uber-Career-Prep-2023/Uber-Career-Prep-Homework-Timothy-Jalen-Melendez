@@ -7,6 +7,7 @@
  * Technique: Simultaneous two pointer
  * Time Complexity: O(n^2)
  * Space Complexity: O(1)
+ * Time: 15 mins
  */
 
  public class TwoSum {

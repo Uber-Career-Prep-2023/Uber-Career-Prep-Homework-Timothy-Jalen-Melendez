@@ -8,6 +8,7 @@
  * Technique: Hash the elements
  * Time Complexity: O(n)
  * Space Complexity: O(n)
+ * Time: 31 mins
  */
 import java.util.HashMap;
 import java.lang.StringBuilder;

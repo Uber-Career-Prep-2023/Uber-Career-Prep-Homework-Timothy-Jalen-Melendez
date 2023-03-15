@@ -6,6 +6,7 @@
  * Technique: Hash the running computation using a stack
  * Time Complexity: O(n)
  * Space Complexity: O(n)
+ * Time: 18 mins
  */
 import java.util.Stack;
 import java.lang.StringBuilder;

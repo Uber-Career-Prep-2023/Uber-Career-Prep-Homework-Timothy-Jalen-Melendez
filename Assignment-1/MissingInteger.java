@@ -6,6 +6,7 @@
  * Technique: Hash the running computation
  * Time Complexity: O(n)
  * Space Complexity: O(1)
+ * Time: 12 mins
  */
 public class MissingInteger {
 

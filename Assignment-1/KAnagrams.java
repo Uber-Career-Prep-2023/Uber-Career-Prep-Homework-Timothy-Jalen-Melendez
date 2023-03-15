@@ -7,6 +7,7 @@
  * Technique: Increments/Decrements count
  * Time Complexity: O(n)
  * Space Complexity: O(n)
+ * Time: 27 mins
  */
 import java.util.HashMap;
 public class KAnagrams {

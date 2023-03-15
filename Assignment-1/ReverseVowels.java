@@ -5,6 +5,7 @@
  * Technique: Hash the elements
  * Time Complexity: O(n)
  * Space Complexity: O(n)
+ * Time: 25 mins
  */
 import java.lang.StringBuilder;
 import java.util.HashSet;
