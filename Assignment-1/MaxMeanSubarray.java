@@ -1,6 +1,6 @@
 /**
  * Author: Timothy Jalen Melendez
- * Question: MaxMeanSubarray
+ * Question 1: MaxMeanSubarray
  * Given an array of integers and an integer, k, find the maximum mean of a subarray of size k.
  * Technique: This is a one of the Two Pointer techniques, more specifically
  * it is Fixed-size sliding window.
