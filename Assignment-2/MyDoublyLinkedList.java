@@ -1,6 +1,6 @@
 public class MyDoublyLinkedList {
 
-    private MyNode head;
+    MyNode head;
     private int size;
 
     public MyDoublyLinkedList(){

@@ -1,7 +1,7 @@
 public class MyBinarySearchTree {
 
 
-    private MyBinarySearchTree.MyNode root;
+    public MyNode root;
     private int size;
 
     public MyBinarySearchTree(){
@@ -11,7 +11,7 @@ public class MyBinarySearchTree {
 
     int min(){
         if(this.root == null){
-            return null;
+            return 0;
         }
         if(this.root.left == null){
             return root.element;
@@ -25,7 +25,7 @@ public class MyBinarySearchTree {
 
     int max(){
         if(this.root == null){
-            return null;
+            return 0;
         }
         if(this.root.right == null){
             return root.element;
@@ -59,15 +59,24 @@ public class MyBinarySearchTree {
             size++;
         }
         else{
-            MyNode newNode = new MyNode(val), toor = this.root;
-            while(toor != null){
-                if(toor.element < val){
+            MyNode newNode = new MyNode(val), toor = this.root, parent = null;
+            while(toor != null) {
+                if (val > toor.element) {
+                    parent = toor;
+                    toor = toor.right;
+                } else if (val < toor.element) {
+                    parent = toor;
                     toor = toor.left;
                 }
-                else if(toor.element > val){
-                    toor = toor.right;
-                }
             }
+            if(val > parent.element){
+                parent.right = newNode;
+            }
+            else{
+                parent.left = newNode;
+            }
+
+
             size++;
         }
     }
@@ -80,7 +89,7 @@ public class MyBinarySearchTree {
         return 0;
     }
     class MyNode {
-        MyBinarySearchTree.MyNode left, right;
+        MyNode left, right;
         int element;
         public MyNode(int elem){
             this.element = elem;

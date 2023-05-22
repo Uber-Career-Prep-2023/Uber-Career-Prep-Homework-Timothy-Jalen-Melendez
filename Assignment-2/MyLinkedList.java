@@ -1,6 +1,6 @@
 public class MyLinkedList {
 
-    private MyNode head;
+    MyNode head;
     private int size;
 
     public MyLinkedList(){
