@@ -10,7 +10,9 @@ public class MyBinarySearchTree {
     }
 
     int min(){
-
+        if(this.root == null){
+            return null;
+        }
         if(this.root.left == null){
             return root.element;
         }
@@ -22,7 +24,9 @@ public class MyBinarySearchTree {
     }
 
     int max(){
-
+        if(this.root == null){
+            return null;
+        }
         if(this.root.right == null){
             return root.element;
         }
@@ -34,7 +38,7 @@ public class MyBinarySearchTree {
     }
 
     boolean contains(int val){
-        MyNode toor = root;
+        MyNode toor = this.root;
         while(toor != null){
             if(val == toor.element){
                 return true;
@@ -50,12 +54,12 @@ public class MyBinarySearchTree {
     }
 
     void insert(int val){
-        if(root == null){
-            root = new MyNode(val);
+        if(this.root == null){
+            this.root = new MyNode(val);
             size++;
         }
         else{
-            MyNode newNode = new MyNode(val), toor = root;
+            MyNode newNode = new MyNode(val), toor = this.root;
             while(toor != null){
                 if(toor.element < val){
                     toor = toor.left;
@@ -72,6 +76,7 @@ public class MyBinarySearchTree {
         if(!contains(val)){
             return -1;
         }
+        
         return 0;
     }
     class MyNode {
@@ -83,6 +88,8 @@ public class MyBinarySearchTree {
     }
 
     public static void main(String[] args){
+        MyBinarySearchTree bst = new MyBinarySearchTree();
+
         System.out.println("Hello World");
     }
 }

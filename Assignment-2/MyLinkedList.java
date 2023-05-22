@@ -10,50 +10,53 @@ public class MyLinkedList {
     MyNode insertAtFront(MyNode head, int val){
         MyNode node = new MyNode(val);
         if(head == null){
-            head = node;
-            return head;
+            this.head = node;
+            this.size++;
+            return this.head;
         }
-        node.next = head;
-        head = node;
-
-        return node;
+        node.next = this.head;
+        this.head = node;
+        this.size++;
+        return this.head;
     }
     void insertAtBack(MyNode head, int val){
         MyNode node = new MyNode(val);
         if(head == null){
-            head = node;
+            this.head = node;
         }
         else{
-            MyNode p = head;
+            MyNode p = this.head;
             while(p.next != null){
                p = p.next;
             }
             p.next = node;
-
         }
+        this.size++;
     }
     void insertAfter(MyNode head, int val, MyNode loc){
         MyNode node = new MyNode(val);
         if(head == null){
-            head = node;
+            this.head = node;
         }
         else{
-            MyNode p = head;
+            MyNode p = this.head;
             while(p != loc){
                 p = p.next;
             }
+            node.next = p.next;
             p.next = node;
-            node.next = p.next.next;
         }
+        this.size++;
     }
     MyNode deleteFront(MyNode head){
         if(head == null){
+            this.size--;
             return head;
         }
-        MyNode p = head.next;
-        head = null;
+        this.head = this.head.next;
+        this.size--;
 
-        return p;
+        return this.head;
 
     }
     void deleteBack(MyNode head){
@@ -61,6 +64,7 @@ public class MyLinkedList {
         while(p.next != null){
             if(p.next.next == null){
                 p.next = null;
+                this.size--;
                 return;
             }
             p = p.next;
@@ -73,6 +77,7 @@ public class MyLinkedList {
         else if(head == loc){
             MyNode p = head.next;
             head = null;
+            this.size--;
             return p;
         }
         else{
@@ -81,11 +86,13 @@ public class MyLinkedList {
                 p = p.next;
             }
             p.next = p.next.next;
+            this.size--;
             return head;
 
         }
     }
     int length(MyNode head){
+        /*
         MyNode p = head;
         int count = 0;
         while(p != null){
@@ -93,16 +100,19 @@ public class MyLinkedList {
             p = p.next;
         }
         return count;
+         */
+        return this.size;
     }
     MyNode reverseIterative(MyNode head){
-        MyNode next, prev = null;
-        for(int i = 0; head != null && i < size; i++, head = next){
-            next = head.next;
-            head.next = prev;
-            prev = head;
-
+        MyNode next = null, prev = null, curr = head;
+        for(int i = 0; curr != null; i++){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        return head;
+        this.head = prev;
+        return this.head;
     }
     MyNode reverseRecursive(MyNode head){
         if(head != null){
@@ -113,7 +123,7 @@ public class MyLinkedList {
 
     void reverseHelper(MyNode current, MyNode previous){
         if(current.next == null){
-            head = current;
+            this.head = current;
             current.next = previous;
             return;
         }
@@ -130,7 +140,29 @@ public class MyLinkedList {
     }
 
     public static void main(String[] args){
-        System.out.println("Hello World");
+        MyLinkedList lst = new MyLinkedList();
+        MyNode h = lst.insertAtFront(null, 1);
+        lst.insertAtBack(h, 2);
+        lst.insertAtFront(h,4);
+        lst.insertAtBack(h, 3);
+        lst.insertAfter(h, 7, lst.head.next);
+        MyNode p = lst.head;
+        while(p != null){
+            System.out.println(p.element);
+            p = p.next;
+        }
+        System.out.println("Size: " + lst.size);
+        System.out.println("~~~~~~");
+        System.out.println("Head: "+lst.head.element);
+        lst.reverseRecursive(lst.head);
+        p = lst.head;
+        while(p != null){
+            System.out.println(p.element);
+            p = p.next;
+        }
+        System.out.println("Size: " + lst.size);
+        System.out.println("~~~~~~");
+
     }
 }
 /*
