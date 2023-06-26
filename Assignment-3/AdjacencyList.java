@@ -1,18 +1,19 @@
 /*
   Question 1: Adjacency List
+  Time Complextiy : O(V+E)
+  Space Complextity: O(V+E)
  */
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashMap;
+import java.util.*;
+
 public class AdjacencyList {
 
 
     private HashMap<Integer, Set<Integer>> map;
-
+    private int vertices;
 
     public AdjacencyList(){
         map = new HashMap<>();
+        vertices = 0;
     }
     static class Pair {
         int[] arr;
@@ -30,6 +31,7 @@ public class AdjacencyList {
     }
 
     public HashMap<Integer, Set<Integer>> adjacencySet(Pair[] edges){
+        HashSet<Integer> verts = new HashSet<>();
         for(int i = 0; i < edges.length; i++){
              Pair p = edges[i];
              int a = p.getA();
@@ -50,7 +52,10 @@ public class AdjacencyList {
                  set = new HashSet<>();
                  map.put(b, set);
              }
+             verts.add(a);
+             verts.add(b);
         }
+        vertices = verts.size();
         return map;
     }
 
@@ -59,11 +64,60 @@ public class AdjacencyList {
             System.out.printf("%d: %s\n", entry.getKey(), entry.getValue());
         }
     }
-/*
-    boolean bfs(int target, map<int, set<int>> graph);
-    boolean dfs(int target, map<int, set<int>> graph);
-    array<int> topologicalSort(map<int, set<int>> graph);
-*/
+
+    //O(V+E) for time and space
+    public static boolean bfs(int origin, int target, HashMap<Integer, Set<Integer>> graph){
+
+        ArrayList<Integer> visited = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
+
+        visited.add(origin);
+        queue.add(origin);
+
+        while(!queue.isEmpty()){
+            int m = queue.poll();
+            //System.out.printf("m: %d\n", m);
+            if(m == target){
+                //System.out.println("in!");
+                return true;
+            }
+            for(int node: graph.get(m)){
+                //System.out.printf("node: %d\n", node);
+                if(!visited.contains(node)){
+                    visited.add(node);
+                    queue.add(node);
+                    //System.out.printf("added: %d\n", node);
+                }
+            }
+        }
+        return false;
+    }
+
+    //O(V+E) for time and space
+    public static boolean dfs(int origin, int target, HashMap<Integer, Set<Integer>> graph){
+        Stack<Integer> stack = new Stack<>();
+        ArrayList<Integer> visited = new ArrayList<>();
+
+        stack.push(origin);
+        visited.add(origin);
+
+        while(!stack.isEmpty()){
+            int node = stack.pop();
+            Set<Integer> lst = graph.get(node);
+            if(node == target){
+                return true;
+            }
+            for(int num: lst){
+                if(!visited.contains(num)){
+                    stack.push(num);
+                    visited.add(num);
+                }
+            }
+
+        }
+        return false;
+    }
+
 
     public static void main(String[] args){
         /*
@@ -95,6 +149,10 @@ public class AdjacencyList {
         AdjacencyList list = new AdjacencyList();
         list.adjacencySet(arr);
         list.printAdjList(list.map);
+        System.out.printf("bfs: Is in: %b\n", bfs(1, 0, list.map));
+        System.out.printf("bfs: Is in: %b\n", bfs(1, 5, list.map));
+        System.out.printf("dfs: Is in: %b\n", dfs(1, 0, list.map));
+        System.out.printf("dfs: Is in: %b\n", dfs(1, 5, list.map));
         System.out.println("~~~~~~~~");
 
         arr = new Pair[6];
@@ -108,11 +166,16 @@ public class AdjacencyList {
         arr[3] = p4;
         p5 = new Pair(2,0);
         arr[4] = p5;
-        Pair p6 = new Pair(4,1);
+        Pair p6 = new Pair(1,4);
         arr[5] = p6;
         list = new AdjacencyList();
         list.adjacencySet(arr);
         list.printAdjList(list.map);
+        System.out.printf("bfs: Is in: %b\n", bfs(1, 4, list.map));
+        System.out.printf("bfs: Is in: %b\n", bfs(1, 5, list.map));
+        System.out.printf("dfs: Is in: %b\n", dfs(1, 0, list.map));
+        System.out.printf("dfs: Is in: %b\n", dfs(1, 5, list.map));
+
 
 
     }

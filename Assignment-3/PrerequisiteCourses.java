@@ -7,4 +7,7 @@
  * Time Spent:
  */
 public class PrerequisiteCourses {
+    public static void main(String[] args) {
+
+    }
 }
