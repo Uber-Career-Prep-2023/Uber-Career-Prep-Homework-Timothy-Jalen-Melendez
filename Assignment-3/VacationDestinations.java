@@ -5,7 +5,10 @@
  * Assume that having a stopover in a city adds an hour of travel time.
  * Time Complexity:
  * Space Complexity:
- * Time Spent:
+ * Time Spent: 40+ mins (unsolved)
  */
 public class VacationDestinations {
+    public static void main(String[] args){
+
+    }
 }
